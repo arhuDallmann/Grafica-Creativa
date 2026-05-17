@@ -1,0 +1,606 @@
+/* =====================================================
+   ARQUIVO DE ESTILO (CSS) - GRÁFICA CREATIVA
+   Este arquivo controla TODA a aparência do site:
+   cores, tamanhos, posições, animações, etc.
+   ===================================================== */
+
+
+/* ── CONFIGURAÇÕES GERAIS ──────────────────────────────
+   Aqui definimos as CORES PRINCIPAIS do site.
+   Se quiser trocar uma cor, mude AQUI e ela muda
+   em todo o site automaticamente! */
+:root {
+  --verde:        #184747;   /* Verde escuro (cor principal) */
+  --verde-claro:  #3cc2c2;   /* Verde água (detalhes e hover) */
+  --ouro:         #795c00;   /* Dourado escuro */
+  --ouro-claro:   #c49a00;   /* Dourado claro (preços, destaques) */
+  --bg:           #f4f7f6;   /* Cor de fundo da página (cinza clarinho) */
+}
+
+/* Remove espaços que os navegadores colocam por padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Faz os elementos respeitarem o tamanho definido */
+}
+
+/* Configurações do corpo da página */
+html { scroll-behavior: smooth; } /* Faz o scroll ser suave ao clicar nos links do menu */
+body {
+  font-family: 'Nunito', sans-serif; /* Fonte padrão de todo o texto */
+  background: var(--bg);             /* Cor de fundo (usamos a variável lá de cima) */
+  overflow-x: hidden;                /* Impede barra de rolagem horizontal */
+}
+
+
+/* ── BARRA DE NAVEGAÇÃO (MENU DO TOPO) ────────────────── */
+.navbar {
+  display: flex;                      /* Coloca os itens lado a lado */
+  justify-content: space-between;     /* Espaço entre logo, menu e botão */
+  align-items: center;                /* Alinha verticalmente no centro */
+  padding: 16px 7%;                   /* Espaço interno (cima/baixo e lados) */
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,.08); /* Sombra suave embaixo */
+  position: sticky;                   /* Fica grudado no topo ao rolar */
+  top: 0;
+  z-index: 1000;                      /* Fica na frente de tudo */
+  transition: all .3s;                /* Animação suave ao mudar */
+}
+
+/* Navbar fica menor quando o usuário rola a página (feito via JS) */
+.navbar.scrolled {
+  padding: 10px 7%;
+  box-shadow: 0 4px 30px rgba(0,0,0,.15);
+}
+
+/* Logo "Gráfica Creativa" */
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif; /* Fonte especial só do logo */
+  font-size: 28px;
+  color: var(--verde);
+  text-decoration: none;  /* Remove sublinhado do link */
+  letter-spacing: 2px;    /* Espaço entre as letras */
+}
+.logo-text span { color: var(--ouro-claro); } /* "Creativa" fica dourado */
+
+/* Links do menu (Serviços, Sobre Nós...) */
+.nav-menu ul {
+  display: flex;       /* Links lado a lado */
+  list-style: none;    /* Remove bolinhas da lista */
+  gap: 30px;           /* Espaço entre cada link */
+}
+.nav-menu a {
+  text-decoration: none;
+  color: var(--verde);
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;  /* Necessário para o traço animado embaixo */
+  transition: .3s;
+}
+
+/* Traço que aparece embaixo do link ao passar o mouse */
+.nav-menu a::after {
+  content: '';             /* Cria um elemento vazio */
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0;                /* Começa com largura zero (escondido) */
+  height: 2px;
+  background: var(--verde-claro);
+  transition: .3s;         /* Animação de aparecer */
+}
+.nav-menu a:hover::after { width: 100%; } /* Ao passar o mouse: aparece completo */
+
+/* Botão "Contato" verde no canto do menu */
+.btn-contato {
+  text-decoration: none;
+  background: var(--verde);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: .3s;
+}
+.btn-contato:hover {
+  background: var(--verde-claro);
+  transform: translateY(-2px);                       /* Sobe 2px */
+  box-shadow: 0 5px 15px rgba(60,194,194,.4);        /* Sombra colorida */
+}
+
+
+/* ── SEÇÃO HERO (TELA DE ENTRADA) ─────────────────────── */
+.hero {
+  min-height: 90vh;           /* Pelo menos 90% da altura da tela */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--verde) 0%, #0d2e2e 60%, #1a4a4a 100%);
+  position: relative;          /* Para posicionar as partículas dentro */
+  overflow: hidden;
+  text-align: center;
+  padding: 60px 7%;
+}
+
+/* Área onde as partículas (bolinhas) são jogadas pelo JS */
+.hero-particles {
+  position: absolute;
+  inset: 0;           /* Ocupa 100% da área do hero */
+  pointer-events: none; /* Cliques passam por ela, não trava o mouse */
+}
+
+/* Cada bolinha individual (criada pelo JavaScript) */
+.hero-particles span {
+  position: absolute;
+  border-radius: 50%;   /* Deixa circular */
+  opacity: .15;
+  animation: float linear infinite; /* Animação definida no @keyframes abaixo */
+}
+
+/* Animação das bolinhas subindo */
+@keyframes float {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: .15; }
+  90%  { opacity: .15; }
+  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+/* Conteúdo central do hero (texto + botões) */
+.hero-content { position: relative; z-index: 2; } /* Fica na frente das partículas */
+
+/* Tag pequena acima do título: "✦ Gráfica em Colatina, ES" */
+.hero-tag {
+  display: inline-block;
+  background: rgba(60,194,194,.2);
+  border: 1px solid var(--verde-claro);
+  color: var(--verde-claro);
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: fadeDown .8s ease both; /* Aparece caindo de cima */
+}
+
+/* Título principal "GRÁFICA CREATIVA" */
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 10vw, 110px); /* Tamanho responsivo: mínimo 56px, máximo 110px */
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 4px;
+  animation: fadeUp .8s ease .2s both; /* Aparece subindo, com .2s de delay */
+}
+.hero h1 span { color: var(--verde-claro); } /* "Creativa" em verde água */
+
+/* Parágrafo de descrição */
+.hero p {
+  font-size: 18px;
+  color: rgba(255,255,255,.75);
+  max-width: 520px;
+  margin: 20px auto 36px;
+  line-height: 1.7;
+  animation: fadeUp .8s ease .4s both;
+}
+
+/* Botões do hero */
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap; /* Em celular, empilha os botões */
+  animation: fadeUp .8s ease .6s both;
+}
+.btn-hero-primary {
+  text-decoration: none;
+  background: var(--verde-claro);
+  color: var(--verde);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 16px;
+  transition: .3s;
+}
+.btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(60,194,194,.5);
+}
+.btn-hero-secondary {
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,.3);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: .3s;
+}
+.btn-hero-secondary:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,.1);
+}
+
+/* "▼ ROLE PARA BAIXO" no rodapé do hero */
+.hero-scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.4);
+  font-size: 13px;
+  letter-spacing: 2px;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); } /* Sobe e desce */
+}
+
+
+/* ── SEÇÃO DE NÚMEROS (ESTATÍSTICAS) ─────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  background: var(--verde-claro);
+}
+.stat {
+  padding: 30px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.2);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: #fff;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,.85);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+
+/* ── SEÇÃO SOBRE NÓS ─────────────────────────────────── */
+.sobre {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 100px 7%;
+  background: #fff;
+}
+.sobre-texto { flex: 1; }
+
+/* Tag pequena: "✦ QUEM SOMOS" */
+.section-tag {
+  display: inline-block;
+  background: rgba(24,71,71,.1);
+  color: var(--verde);
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Título da seção */
+.sobre-texto h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: var(--verde);
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.sobre-texto h2 span { color: var(--ouro-claro); }
+.sobre-texto p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+/* Lado da imagem/logo */
+.sobre-img {
+  flex: 1;
+  position: relative;
+}
+.sobre-img img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.15);
+  transition: .3s;
+}
+.sobre-img img:hover { transform: scale(1.02); } /* Cresce levemente ao passar o mouse */
+
+/* Caixinha dourada "100% Personalizado" sobre a imagem */
+.sobre-img-badge {
+  position: absolute;
+  bottom: -20px; right: 20px;
+  background: var(--ouro-claro);
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(121,92,0,.4);
+}
+.sobre-img-badge strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  line-height: 1;
+}
+.sobre-img-badge span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .9;
+}
+
+
+/* ── SEÇÃO DE PRODUTOS ───────────────────────────────── */
+.produtos {
+  padding: 100px 7%;
+  background: var(--bg);
+}
+
+/* Cabeçalho centralizado da seção */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--verde);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+.section-header p { font-size: 16px; color: #666; }
+
+/* Grade de produtos: colunas automáticas, mínimo 260px cada */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Cada card de produto */
+.produto-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;              /* Imagem não vaza para fora do arredondado */
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  transition: .4s cubic-bezier(.25,.8,.25,1); /* Animação suave e elegante */
+  cursor: pointer;
+  position: relative;
+}
+.produto-card:hover {
+  transform: translateY(-8px);   /* Sobe ao passar o mouse */
+  box-shadow: 0 20px 50px rgba(0,0,0,.15);
+}
+
+/* Área da imagem do produto */
+.produto-img-wrap {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.produto-img-wrap img {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;   /* Imagem inteira aparece sem cortar */
+  transition: .4s;
+  padding: 10px;
+}
+.produto-card:hover .produto-img-wrap img { transform: scale(1.08); } /* Zoom na imagem */
+
+/* Etiqueta colorida no canto da imagem ("Popular", "Versátil"...) */
+.produto-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--ouro-claro);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Texto abaixo da imagem do produto */
+.produto-body { padding: 20px; }
+.produto-body h3 { font-size: 18px; font-weight: 900; color: var(--verde); margin-bottom: 6px; }
+.produto-body .desc { font-size: 13px; color: #888; margin-bottom: 16px; line-height: 1.5; }
+.produto-body .preco {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--ouro-claro);
+  margin-bottom: 16px;
+}
+
+/* Botão "Solicitar Orçamento" */
+.btn-orcamento {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--verde);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: .5px;
+  transition: .3s;
+}
+.btn-orcamento:hover { background: var(--verde-claro); }
+
+
+/* ── SEÇÃO CTA CATÁLOGO ──────────────────────────────── */
+.catalogo-cta {
+  padding: 80px 7%;
+  background: linear-gradient(135deg, var(--verde) 0%, #0d2e2e 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Círculo decorativo no canto */
+.catalogo-cta::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: var(--verde-claro);
+  opacity: .07;
+  border-radius: 50%;
+  top: -100px; right: -100px;
+}
+
+.catalogo-cta h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.catalogo-cta p { color: rgba(255,255,255,.7); font-size: 16px; margin-bottom: 32px; position: relative; }
+.btn-catalogo {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--verde-claro);
+  color: var(--verde);
+  padding: 16px 40px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 16px;
+  transition: .3s;
+  position: relative;
+}
+.btn-catalogo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(60,194,194,.4);
+}
+
+
+/* ── RODAPÉ (FOOTER) ─────────────────────────────────── */
+.footer {
+  background: #0d2e2e;
+  color: #fff;
+  padding: 60px 7% 24px;
+}
+
+/* Grade do footer: coluna grande + 2 pequenas */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand .logo-text { font-size: 32px; }
+.footer-brand p { color: rgba(255,255,255,.5); font-size: 14px; margin-top: 10px; line-height: 1.7; }
+
+/* Títulos das colunas do footer */
+.footer h4 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--verde-claro);
+  margin-bottom: 18px;
+  font-weight: 800;
+}
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 10px; }
+.footer ul li a { text-decoration: none; color: rgba(255,255,255,.6); font-size: 14px; transition: .3s; }
+.footer ul li a:hover { color: #fff; }
+.footer ul li.contact-item { color: rgba(255,255,255,.6); font-size: 14px; }
+
+/* Linha final do footer com copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p      { font-size: 13px; color: rgba(255,255,255,.4); }
+.footer-bottom .made-with { font-size: 13px; color: rgba(255,255,255,.3); }
+
+
+/* ── BOTÃO FLUTUANTE DO WHATSAPP ─────────────────────── */
+.wa-float {
+  position: fixed;      /* Fica fixo na tela, não rola com a página */
+  bottom: 28px; right: 28px;
+  z-index: 999;
+  width: 58px; height: 58px;
+  background: #25D366;  /* Verde do WhatsApp */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37,211,102,.5);
+  text-decoration: none;
+  transition: .3s;
+  animation: waPulse 2s infinite; /* Pulsa para chamar atenção */
+}
+.wa-float:hover { transform: scale(1.1); }
+
+/* Animação de pulsar (sombra que cresce e diminui) */
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 8px 25px rgba(37,211,102,.5); }
+  50%      { box-shadow: 0 8px 40px rgba(37,211,102,.8); }
+}
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+
+/* ── ANIMAÇÕES DE ENTRADA ────────────────────────────── */
+/* Sobe de baixo para cima */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: none; }
+}
+/* Desce de cima para baixo */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Elementos com essa classe ficam escondidos até aparecer na tela */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: .7s ease;
+}
+/* Quando o JS detecta que apareceu na tela, adiciona essa classe */
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ── RESPONSIVIDADE (CELULAR) ────────────────────────── */
+/* Tudo que está aqui só vale quando a tela for menor que 768px */
+@media (max-width: 768px) {
+  .sobre       { flex-direction: column; padding: 60px 5%; }  /* Empilha texto e imagem */
+  .footer-grid { grid-template-columns: 1fr; }                 /* Footer em coluna única */
+  .stats       { grid-template-columns: 1fr; }                 /* Stats em coluna única */
+  .stat        { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .nav-menu    { display: none; }                              /* Esconde menu no celular */
+  .hero h1     { font-size: 60px; }                            /* Título menor no celular */
+}
