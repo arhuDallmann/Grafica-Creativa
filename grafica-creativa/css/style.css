@@ -1,20 +1,9 @@
-/* =====================================================
-   ARQUIVO DE ESTILO (CSS) - GRÁFICA CREATIVA
-   Este arquivo controla TODA a aparência do site:
-   cores, tamanhos, posições, animações, etc.
-   ===================================================== */
-
-
-/* ── CONFIGURAÇÕES GERAIS ──────────────────────────────
-   Aqui definimos as CORES PRINCIPAIS do site.
-   Se quiser trocar uma cor, mude AQUI e ela muda
-   em todo o site automaticamente! */
 :root {
-  --verde:        #184747;   /* Verde escuro (cor principal) */
-  --verde-claro:  #3cc2c2;   /* Verde água (detalhes e hover) */
-  --ouro:         #795c00;   /* Dourado escuro */
-  --ouro-claro:   #c49a00;   /* Dourado claro (preços, destaques) */
-  --bg:           #f4f7f6;   /* Cor de fundo da página (cinza clarinho) */
+  --verde:        #184747;   
+  --verde-claro:  #3cc2c2;   
+  --ouro:         #795c00;   
+  --ouro-claro:   #c49a00;   
+  --bg:           #f4f7f6;   
 }
 
 /* Remove espaços que os navegadores colocam por padrão */

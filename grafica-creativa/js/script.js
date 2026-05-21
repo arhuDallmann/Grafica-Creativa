@@ -1,9 +1,4 @@
-/* =====================================================
-   ARQUIVO JAVASCRIPT - GRÁFICA CREATIVA
-   O JavaScript é a parte que faz o site "se mexer".
-   Sem ele, o site é estático (parado). Com ele,
-   temos animações, efeitos, contadores, etc.
-   ===================================================== */
+
 
 
 /* ── 1. NAVBAR ENCOLHE AO ROLAR ──────────────────────────
