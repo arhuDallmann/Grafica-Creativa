@@ -13,9 +13,7 @@ window.addEventListener('scroll', () => {
 });
 
 
-/* ── 2. PARTÍCULAS ANIMADAS NO HERO ──────────────────────
-   Cria bolinhas coloridas que sobem pela tela de entrada.
-   São criadas pelo JS e estilizadas pelo CSS. */
+/* ── 2. PARTÍCULAS ANIMADAS NO HERO ────────────────────── */
 (function createParticles() {
   const container = document.getElementById('particles'); // Onde as bolinhas ficam
   const colors = ['#3cc2c2', '#795c00', '#ffffff', '#c49a00']; // Cores possíveis
@@ -36,7 +34,7 @@ window.addEventListener('scroll', () => {
 
     container.appendChild(span); // Coloca a bolinha dentro do container
   }
-})(); // Os () no final fazem a função rodar imediatamente
+})(); 
 
 
 /* ── 3. SCROLL REVEAL (APARECER AO ROLAR) ────────────────

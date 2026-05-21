@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-  =====================================================
-  ARQUIVO HTML - GRÁFICA CREATIVA
-  Este arquivo é o "esqueleto" do site.
-  Ele define a ESTRUTURA e o CONTEÚDO (textos, imagens).
-  A APARÊNCIA está no arquivo: css/style.css
-  Os EFEITOS estão no arquivo:  js/script.js
-  As IMAGENS estão na pasta:    imagens/
-  ===================================================== 
--->
 <html lang="pt-BR">
 
 <head>
@@ -16,14 +6,6 @@
   <meta charset="utf-8">  <!-- Aceita acentos e caracteres especiais -->
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Funciona em celular -->
   <title>Gráfica Creativa</title>
-
-  <!-- 
-    FONTES GOOGLE:
-    Bebas Neue = fonte dos títulos grandes (ex: "GRÁFICA CREATIVA")
-    Nunito     = fonte dos textos normais
-    Essas fontes são carregadas da internet (Google Fonts).
-    Sem internet, usará fontes padrão do sistema.
-  -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
 
   <!-- LINK PARA O CSS: toda a aparência do site está nesse arquivo -->
@@ -31,17 +13,11 @@
 </head>
 
 <body>
-  <!-- ================================================
-       NAVBAR (BARRA DE MENU NO TOPO)
-       Fica fixa no topo da tela ao rolar.
-       O id="navbar" é usado pelo JavaScript para
-       adicionar/remover a classe "scrolled".
-       ================================================ -->
   <header class="navbar" id="navbar">
 
     <!-- Logo clicável que volta pro topo -->
     <a href="#" class="logo-text">Gráfica <span>Creativa</span></a>
-
+    <h1>Diomas</h1>
     <!-- Links de navegação -->
     <nav class="nav-menu">
       <ul>
@@ -62,12 +38,6 @@
 
   </header>
 
-
-  <!-- ================================================
-       HERO (SEÇÃO DE ENTRADA / TELA PRINCIPAL)
-       É a primeira coisa que o usuário vê.
-       Tem fundo escuro, título grande e botões de ação.
-       ================================================ -->
   <section class="hero">
 
     <!-- Container das bolinhas animadas (preenchido pelo JavaScript) -->
@@ -103,13 +73,6 @@
 
   </section>
 
-
-  <!-- ================================================
-       STATS (SEÇÃO DE NÚMEROS)
-       Aparece logo abaixo do hero com 3 números animados.
-       O data-target="500" diz ao JavaScript qual número contar até.
-       A classe "reveal" faz aparecer com animação ao rolar.
-       ================================================ -->
   <div class="stats reveal">
 
     <div class="stat">
@@ -119,23 +82,17 @@
     </div>
 
     <div class="stat">
-      <div class="stat-num" data-target="30">0</div>
+      <div class="stat-num" data-target="4">0</div>
       <div class="stat-label">Produtos no Catálogo</div>
     </div>
 
     <div class="stat">
-      <div class="stat-num" data-target="5">0</div>
+      <div class="stat-num" data-target="2">0</div>
       <div class="stat-label">Anos de Experiência</div>
     </div>
 
   </div>
 
-
-  <!-- ================================================
-       SOBRE NÓS
-       id="sobre" permite que o menu link direto aqui.
-       Dividido em texto (esquerda) e imagem (direita).
-       ================================================ -->
   <section class="sobre" id="sobre">
 
     <!-- Bloco de texto com a classe "reveal" para animar ao aparecer -->
@@ -164,13 +121,6 @@
 
   </section>
 
-
-  <!-- ================================================
-       PRODUTOS (GRADE DE CARDS)
-       id="servicos" é o alvo do link do menu.
-       Cada produto tem: imagem, título, descrição,
-       preço e botão que abre o WhatsApp.
-       ================================================ -->
   <section class="produtos" id="servicos">
 
     <!-- Cabeçalho da seção centralizado -->
@@ -180,13 +130,11 @@
       <p>Confira alguns dos nossos produtos mais pedidos</p>
     </div>
 
-    <!-- Grade automática de cards (o CSS decide quantas colunas) -->
     <div class="produtos-grid">
 
-      <!-- ── PRODUTO 1: CONES ── -->
       <div class="produto-card reveal">
 
-        <!-- Área da imagem. O "style" define a cor de fundo da foto -->
+        <!-- Área da imagem -->
         <div class="produto-img-wrap" style="background: #1a1a2e;">
           <img src="imagens/cone.png" alt="Cones Personalizados">
           <span class="produto-badge">Popular</span> <!-- Etiqueta dourada -->
@@ -198,7 +146,7 @@
           <p class="desc">Sulfite 75g ou Couchê brilhoso 90g. Para sorvete, pipoca e muito mais.</p>
           <div class="preco">A partir de R$ 4,00 un</div>
 
-          <!-- Link do WhatsApp com mensagem já definida no text= -->
+          <!-- Link do WhatsApp com mensagem-->
           <a href="https://wa.me/27996569028?text=Olá!%20Quero%20orçamento%20de%20Cones%20Personalizados."
              target="_blank"
              class="btn-orcamento">
@@ -206,10 +154,7 @@
           </a>
         </div>
       </div>
-      <!-- ── FIM PRODUTO 1 ── -->
 
-
-      <!-- ── PRODUTO 2: ADESIVOS ── -->
       <div class="produto-card reveal">
         <div class="produto-img-wrap" style="background: #1a0a00;">
           <img src="imagens/adesivo.jpg" alt="Adesivos">
@@ -218,7 +163,7 @@
         <div class="produto-body">
           <h3>Adesivos</h3>
           <p class="desc">Coloridos, autocolantes, duráveis e personalizáveis em diversas quantidades e formatos.</p>
-          <div class="preco">Consulte o preço</div>
+          <div class="preco">A partir de R$2,00</div>
           <a href="https://wa.me/27996569028?text=Olá!%20Quero%20orçamento%20de%20Adesivos."
              target="_blank"
              class="btn-orcamento">
@@ -226,10 +171,7 @@
           </a>
         </div>
       </div>
-      <!-- ── FIM PRODUTO 2 ── -->
 
-
-      <!-- ── PRODUTO 3: CARTÕES ── -->
       <div class="produto-card reveal">
         <div class="produto-img-wrap" style="background: #0d0800;">
           <img src="imagens/cartoes.png" alt="Cartões">
@@ -246,10 +188,7 @@
           </a>
         </div>
       </div>
-      <!-- ── FIM PRODUTO 3 ── -->
 
-
-      <!-- ── PRODUTO 4: COPOS ── -->
       <div class="produto-card reveal">
         <div class="produto-img-wrap" style="background: #0a1a1a;">
           <img src="imagens/copo_plastico.png" alt="Copos Plásticos">
@@ -266,18 +205,10 @@
           </a>
         </div>
       </div>
-      <!-- ── FIM PRODUTO 4 ── -->
 
-    </div><!-- fim .produtos-grid -->
+    </div>
   </section>
 
-
-  <!-- ================================================
-       CTA CATÁLOGO
-       Seção de chamada para ação (Call To Action).
-       Convida o usuário a pedir o catálogo completo.
-       id="catalogo" é o alvo do link do menu.
-       ================================================ -->
   <section class="catalogo-cta reveal" id="catalogo">
     <h2>Catálogo Completo 2026</h2>
     <p>Temos muito mais produtos! Blocos de anotações, cardápios, tampas e mais de 30 itens.</p>
@@ -288,14 +219,6 @@
     </a>
   </section>
 
-
-  <!-- ================================================
-       FOOTER (RODAPÉ)
-       Dividido em 3 colunas:
-       - Coluna 1: Brand (logo + descrição)
-       - Coluna 2: Navegação
-       - Coluna 3: Contato
-       ================================================ -->
   <footer class="footer">
     <div class="footer-grid">
 
@@ -327,41 +250,24 @@
         </ul>
       </div>
 
-    </div><!-- fim .footer-grid -->
+    </div>
 
-    <!-- Linha de copyright no fundo -->
     <div class="footer-bottom">
-      <p>© 2026 Gráfica Creativa. Todos os direitos reservados.</p>
+      <p>© 2024 Gráfica Creativa. Todos os direitos reservados.</p>
       <span class="made-with">Feito com ❤️ em Colatina</span>
     </div>
 
   </footer>
 
-
-  <!-- ================================================
-       BOTÃO FLUTUANTE DO WHATSAPP
-       Aparece em todas as páginas, fixo no canto.
-       O ícone é um SVG (imagem vetorial) do WhatsApp.
-       ================================================ -->
   <a href="https://wa.me/27996569028?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento."
      target="_blank"
      class="wa-float"
      title="Fale conosco no WhatsApp">
-    <!-- SVG = imagem vetorial (escala sem perder qualidade) -->
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
 
-
-  <!-- ================================================
-       LINK DO JAVASCRIPT
-       O script fica no FINAL do body (antes do </body>).
-       Por que no final? Para o HTML carregar primeiro,
-       e só depois o JS rodar. Se colocar no <head>,
-       o JS tentaria mexer em elementos que ainda
-       não existem na página, dando erro.
-       ================================================ -->
   <script src="js/script.js"></script>
 
 </body>
